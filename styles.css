@@ -1,41 +1,77 @@
-body {
+*, body {
     margin: 0;
+    border: 1px solid red;
 }
 
+
+/* Header */
 #header{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     background-color: darkblue;
     justify-content: space-between;
     align-items: center;
     color: white;
     padding: 20px;
+    margin-bottom: auto;
 }
 
-#header h1{
-    font-size: 20px;
-    
+#logo{
+    width: 350px;
+    height: 100px;
 }
+
+#ugb{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+#Facultad{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* MID CONTENT */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
 
 #footer{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
-    right: o;
-    justify-content: center;
-    width: 100%;
+    right: 0;
     background-color: darkblue;
-    height: 100px;
     padding: 10px;
 
 }
 
-#footer h1{
+#footer-text{
     text-align: center;
-    font-size: 20px;
+    
     color: white;
 }
 
