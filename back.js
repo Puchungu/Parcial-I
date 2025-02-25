@@ -1,64 +1,3 @@
-/*
-class Miformulario extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: "open" });
-        this.shadowRoot.innerHTML = `
-            <style>
-                .container {
-                    margin-top: 0px;
-                }
-                .texto {
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: darkblue;
-                    margin-top: none;
-                    margin-top: 0;
-                }
-                label {
-                    font-size: 20px;
-                    margin: 10px 0 5px;
-                    color: #f9faf8;
-                }
-                button {
-                    margin-top: 15px;
-                    margin-bottom: 15px;
-                    padding: 10px 20px;
-                    font-size: 15px;
-                    color: white;
-                    background-color: #007BFF;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-                button:hover {
-                    background-color: #0056b3;
-                }
-                
-                h1{
-                    color: #f9faf8;
-                }
-            </style>
-            <div class="container">
-                <div class="texto">
-                    <h1>Formulario</h1>
-                        <label>Usuario</label>
-                        <input>
-                        <label>Password</label>
-                        <input type="password">
-                        <button>Enviar</button>
-                </div>
-            </div>
-        `;  
-    }
-}
-customElements.define("mi-formulario", Miformulario);
-*/
-
-/*
 class HeroText extends HTMLElement{
     constructor(){
         super();
@@ -67,7 +6,7 @@ class HeroText extends HTMLElement{
             <style>
                 #hero {
                     display: flex;
-                    background-color: darkblue;
+                    background-color: #1f2937;
                     padding: 50px 8%;
                     flex-wrap: wrap;
                     justify-content: space-between;
@@ -75,7 +14,8 @@ class HeroText extends HTMLElement{
                 .herotext{
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
+                    align-items: center;
+                    justify-content: center;
                     flex-wrap: wrap;
                 }        
                 .heromaintext{
@@ -89,10 +29,31 @@ class HeroText extends HTMLElement{
                 .herosubtext{
                     display: flex;
                     flex-wrap: wrap;
-                    color: #e5e7eb;
+                    color: #f9faf8;
                     font-size: 18px;
                     margin-top: 5px;
                     margin-bottom: 0px;
+                }
+                .herobutton{
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: 5px;
+                    background-color: darkblue;
+                    font-size: 18px;
+                    color: #f9faf8;
+                    padding: 5px 30px;
+                    border-radius: 5px;
+                    border: 0px;
+                }
+                #heroimage{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .placeholder{
+                    width: 350px;
+                    height: 250px;
                 }
                 .herobutton{
                     display: flex;
@@ -105,31 +66,41 @@ class HeroText extends HTMLElement{
                     border-radius: 5px;
                     border: 0px;
                 }
-                #heroimage{
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: flex-end;
-                    align-items: center;
-                }
-
-                .placeholder{
-                    margin-top: 10px;
-                    width: 100%;
-                    height: auto;
+                .herobutton:hover{
+                    background-color: blue
                 }
             </style>
            <div id="hero">
                 <div class="herotext">
                     <p class="heromaintext">${this.getAttribute("main-text")}</p>
                     <p class="herosubtext">${this.getAttribute("sub-text")}</p>
+                    <button class="herobutton">Mas informacion</button>
                 </div>
                 <div class="heroimage">
                     <img class="placeholder" src="${this.getAttribute("url")}" alt="placeholder">
-                </div>     
+                </div>
             </div>
         `;
+        const url = this.getAttribute("urlboton");
+        this.shadowRoot.querySelector(".herobutton").addEventListener("click", () => {
+           window.location.href = url;
+        });
     }
 }
 customElements.define("hero-text", HeroText);
-*/
+
+
+//evento tercer boton
+function video(){
+    window.location.href = "https://www.youtube.com/watch?v=5zPvzHGcmgI";
+}
+
+const boton = document.querySelector("#boton");
+boton.addEventListener("mouseover",function(){
+    boton.style.backgroundColor = "red";
+} );
+
+boton.addEventListener("mouseout", function() {
+    boton.style.backgroundColor = "";
+  });
 
