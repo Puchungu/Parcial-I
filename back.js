@@ -1,111 +1,135 @@
-
-// Sin  slot
-
-class MiElemento extends HTMLElement{
-    constructor(){
-        super()
-        this.attachShadow({ mode: "open" });
-    }
-
-    connectedCallback(){
-        // Obtener valores pasados en el HTML
-        const titulo = this.getAttribute("titulo");
-        const descripcion = this.getAttribute("descripcion");
-
-        // Definir la estructura del componente
-        this.shadowRoot.innerHTML = `
-            <style>
-                .card {
-                    border: 2px solid #444;
-                    border-radius: 10px;
-                    padding: 15px;
-                    width: 200px;
-                    text-align: center;
-                    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-                    font-family: Arial, sans-serif;
-                }
-                .title {
-                    font-size: 18px;
-                    font-weight: bold;
-                }
-                .desc {
-                    font-size: 14px;
-                    color: #555;
-                }
-            </style>
-            <div class="card">
-                <div class="title">${titulo}</div>
-                <div class="desc">${descripcion}</div>
-            </div>
-        `;
-    }
-}
-
-window.customElements.define('mi-elemento', MiElemento)
-
-// Con slot
-
-class MiElemento2 extends HTMLElement {
+/*
+class Miformulario extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
-    }
-
-    connectedCallback() {
         this.shadowRoot.innerHTML = `
             <style>
-                .card {
+                .container {
+                    margin-top: 0px;
+                }
+                .texto {
                     display: flex;
                     flex-wrap: wrap;
-                    border: 2px solid #444;
-                    border-radius: 10px;
-                    padding: 15px;
-                    width: 200px;
-                    text-align: center;
-                    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-                    font-family: Arial, sans-serif;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: darkblue;
+                    margin-top: none;
+                    margin-top: 0;
                 }
-                .title {
-                    font-size: 18px;
-                    font-weight: bold;
+                label {
+                    font-size: 20px;
+                    margin: 10px 0 5px;
+                    color: #f9faf8;
                 }
-                .desc {
-                    font-size: 14px;
-                    color: #555;
+                button {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    padding: 10px 20px;
+                    font-size: 15px;
+                    color: white;
+                    background-color: #007BFF;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                button:hover {
+                    background-color: #0056b3;
+                }
+                
+                h1{
+                    color: #f9faf8;
                 }
             </style>
-            <div class="card">
-                <slot></slot> <!-- Aquí se insertará el contenido -->
+            <div class="container">
+                <div class="texto">
+                    <h1>Formulario</h1>
+                        <label>Usuario</label>
+                        <input>
+                        <label>Password</label>
+                        <input type="password">
+                        <button>Enviar</button>
+                </div>
+            </div>
+        `;  
+    }
+}
+customElements.define("mi-formulario", Miformulario);
+*/
+
+/*
+class HeroText extends HTMLElement{
+    constructor(){
+        super();
+        this.attachShadow({mode: "open"});
+        this.shadowRoot.innerHTML = `
+            <style>
+                #hero {
+                    display: flex;
+                    background-color: darkblue;
+                    padding: 50px 8%;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                .herotext{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+                }        
+                .heromaintext{
+                    display: flex;
+                    flex-wrap: wrap;
+                    color: #f9faf8;
+                    font-weight: 900;
+                    font-size: 48px;
+                    margin-bottom: 0px;
+                }
+                .herosubtext{
+                    display: flex;
+                    flex-wrap: wrap;
+                    color: #e5e7eb;
+                    font-size: 18px;
+                    margin-top: 5px;
+                    margin-bottom: 0px;
+                }
+                .herobutton{
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: 5px;
+                    background-color: #3882f6;
+                    font-size: 18px;
+                    color: #f9faf8;
+                    padding: 5px 30px;
+                    border-radius: 5px;
+                    border: 0px;
+                }
+                #heroimage{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+
+                .placeholder{
+                    margin-top: 10px;
+                    width: 100%;
+                    height: auto;
+                }
+            </style>
+           <div id="hero">
+                <div class="herotext">
+                    <p class="heromaintext">${this.getAttribute("main-text")}</p>
+                    <p class="herosubtext">${this.getAttribute("sub-text")}</p>
+                </div>
+                <div class="heroimage">
+                    <img class="placeholder" src="${this.getAttribute("url")}" alt="placeholder">
+                </div>     
             </div>
         `;
     }
 }
+customElements.define("hero-text", HeroText);
+*/
 
-customElements.define("mi-elemento2", MiElemento2);
-
-// Usando estilos desde otro archivo css
-class MiElemento3 extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" });
-  
-      // Creas un enlace a tu archivo CSS externo
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = "styles.css";  // Ruta del archivo CSS
-  
-      // Asegúrate de agregar el enlace al shadowRoot
-      this.shadowRoot.appendChild(link);
-  
-      // El contenido HTML del componente
-      this.shadowRoot.innerHTML +=`
-    <div class="container">
-        <div class="card">
-          <h2>${this.getAttribute('titulo')}</h2>
-          <p>${this.getAttribute('descripcion')}</p>
-        </div>
-    </div>
-      `;
-    }
-  }
-customElements.define("mi-elemento3", MiElemento3);
